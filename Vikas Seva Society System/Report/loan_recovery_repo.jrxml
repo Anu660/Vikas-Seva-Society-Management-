@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="loan_recovery_repo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd0e3f2f-76fb-462f-9386-df8014fdab74">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     loan_recovery_tbl.`aid` AS loan_recovery_tbl_aid,
+     loan_recovery_tbl.`date` AS loan_recovery_tbl_date,
+     loan_recovery_tbl.`account_holder_name` AS loan_recovery_tbl_account_holder_name,
+     loan_recovery_tbl.`t_pay` AS loan_recovery_tbl_t_pay,
+     loan_recovery_tbl.`coll_of_day` AS loan_recovery_tbl_coll_of_day
+FROM
+     `loan_recovery_tbl` loan_recovery_tbl]]>
+	</queryString>
+	<field name="loan_recovery_tbl_aid" class="java.lang.Integer"/>
+	<field name="loan_recovery_tbl_date" class="java.sql.Date"/>
+	<field name="loan_recovery_tbl_account_holder_name" class="java.lang.String"/>
+	<field name="loan_recovery_tbl_t_pay" class="java.lang.Long"/>
+	<field name="loan_recovery_tbl_coll_of_day" class="java.lang.Long"/>
+	<group name="loan_recovery_tbl_aid">
+		<groupExpression><![CDATA[$F{loan_recovery_tbl_aid}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="69f840ba-c837-4e3e-a4ac-e426cbfea171"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="79e0cb84-dfd1-415a-bd16-516c45b90022"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="59026db9-d01d-487e-add6-d19ac8837c49"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{loan_recovery_tbl_aid}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="200" y="0" width="400" height="62" uuid="d8e47461-7371-408b-831f-a77829d73319"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[  Loan Recovery]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="3a159007-16b0-4a11-bf7f-40d5f77715ad"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="172" height="15" forecolor="#736343" uuid="fa35021d-2b1f-4e5b-9b1d-5e8f7e2d5db1"/>
+				<text><![CDATA[     Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="171" height="15" forecolor="#736343" uuid="0f12d1b2-6fd9-49e6-9c66-23ba3d8bdd7c"/>
+				<text><![CDATA[  Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="200" height="15" forecolor="#736343" uuid="1562c389-e61a-45a4-a245-f54a7b439f5d"/>
+				<text><![CDATA[  Transfer Payment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="200" height="15" forecolor="#736343" uuid="fdfe660a-98f0-4633-a2fd-2fc25719c203"/>
+				<text><![CDATA[ Collection Of the day]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="edec9965-46e6-4291-941c-c7cf92cbe396"/>
+				<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+					<reportElement style="Detail" x="0" y="0" width="200" height="15" uuid="ec7e5945-e39b-4f07-b9ea-250b70441af5"/>
+					<textFieldExpression><![CDATA[$F{loan_recovery_tbl_date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="200" y="0" width="200" height="15" uuid="1172bc9d-34b3-4e4a-ba16-db266f9477e0"/>
+					<textFieldExpression><![CDATA[$F{loan_recovery_tbl_account_holder_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="200" height="15" uuid="bbe6eeae-e25b-458e-aad7-ca9e0b1202b1"/>
+					<textFieldExpression><![CDATA[$F{loan_recovery_tbl_t_pay}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="200" height="15" uuid="b66dc9b5-86fa-43af-96a3-a2281e264b7d"/>
+					<textFieldExpression><![CDATA[$F{loan_recovery_tbl_coll_of_day}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="8238a29d-5072-499f-80fb-341a19dcede7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="7b45a766-261b-4b7a-97b7-ff39b9415970"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="05e1afa9-f302-46cd-bf5b-d948a1373e84"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="d5a62151-5867-4be2-bcf5-c29f389bc1ad"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="ea4de85c-d3e9-41b7-abbe-c3f82a7a8b87"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Account_holder_repo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bab1f628-a6d3-478d-aaf7-60327f3060c3">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     account_holders_tbl.`aid` AS account_holders_tbl_aid,
+     account_holders_tbl.`account_holder_name` AS account_holders_tbl_account_holder_name,
+     account_holders_tbl.`gender` AS account_holders_tbl_gender,
+     account_holders_tbl.`address` AS account_holders_tbl_address,
+     account_holders_tbl.`adhar_number` AS account_holders_tbl_adhar_number,
+     account_holders_tbl.`account_open_date` AS account_holders_tbl_account_open_date,
+     account_holders_tbl.`contact_no` AS account_holders_tbl_contact_no,
+     account_holders_tbl.`land_area` AS account_holders_tbl_land_area
+FROM
+     `account_holders_tbl` account_holders_tbl]]>
+	</queryString>
+	<field name="account_holders_tbl_aid" class="java.lang.Integer"/>
+	<field name="account_holders_tbl_account_holder_name" class="java.lang.String"/>
+	<field name="account_holders_tbl_gender" class="java.lang.String"/>
+	<field name="account_holders_tbl_address" class="java.lang.String"/>
+	<field name="account_holders_tbl_adhar_number" class="java.lang.Long"/>
+	<field name="account_holders_tbl_account_open_date" class="java.sql.Date"/>
+	<field name="account_holders_tbl_contact_no" class="java.lang.Long"/>
+	<field name="account_holders_tbl_land_area" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="215" y="0" width="329" height="61" uuid="97370a1a-b9c1-4ee6-8ad5-1eac066a23f6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="40" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Account Holders ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="1afeaad6-9eb4-4d09-9b9e-cd02aa06c67c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="72" height="15" forecolor="#736343" uuid="8c709fc9-1267-4af3-a758-6e8adc29fce7"/>
+				<text><![CDATA[Acc.No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="72" y="1" width="126" height="15" forecolor="#736343" uuid="a90ed7c8-4a6e-4be1-8c9d-8d9a6e3f0b4a"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="215" y="0" width="73" height="15" forecolor="#736343" uuid="9bf432b3-aa77-491f-a57a-678bac8c1c14"/>
+				<text><![CDATA[gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="ee051d0f-0131-4a31-8699-0702057cd22d"/>
+				<text><![CDATA[address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="fad4ae5e-0435-40f7-a0e8-4d48cbfadc1a"/>
+				<text><![CDATA[adhar number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="72dd9997-e62f-42f7-8523-fadbbd7064ad"/>
+				<text><![CDATA[open date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="b981b809-f50f-4b50-b9d3-da867f7246d6"/>
+				<text><![CDATA[contact_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="0e6ad0d5-9b87-4bc1-ad95-9a07aa2b66d0"/>
+				<text><![CDATA[land_area]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="b0dc6710-31d1-405c-831d-f30543efe062"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="0a0d2d5c-acc0-433b-8d4c-903d8cae5c80"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_aid}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="72" y="0" width="126" height="15" uuid="810403c9-23cc-443d-abbf-2a5ab23d9b0d"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_account_holder_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="215" y="0" width="73" height="15" uuid="12e86058-21f2-4e87-b380-71b63ecd602c"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_gender}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="7192a5be-cb38-4894-a10f-5b4a38418da6"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_address}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="65682994-33c6-477d-9aa0-47c9cef01b53"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_adhar_number}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="b92cce62-65db-49a5-9cff-5ac23b6f9dd5"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_account_open_date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="3267195c-1d93-414b-b2f5-d267c4257ac8"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_contact_no}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="714" y="0" width="86" height="15" uuid="96e37738-eddf-4a55-921f-f7c5f75bff20"/>
+					<textFieldExpression><![CDATA[$F{account_holders_tbl_land_area}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="9167163b-b18a-4e63-9587-d122087cb2fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="43" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#9999FF" backcolor="#F2EBDF" uuid="f7b8537e-d160-41a9-a763-64212f3d1476"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="9509960a-552e-41f6-95e8-f887366ca9d2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="317936e0-d6c6-40cd-b941-bf7a3991e8c2"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="945a905d-c069-4525-a8d8-227fbf4e1737"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

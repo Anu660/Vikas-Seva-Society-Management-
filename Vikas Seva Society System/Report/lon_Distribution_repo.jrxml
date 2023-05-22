@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lon_Distribution_repo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e42310fd-ce02-4173-9e19-5f4d363f13c6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     loan_distribution_tbl.`aid` AS loan_distribution_tbl_aid,
+     loan_distribution_tbl.`your_loan` AS loan_distribution_tbl_your_loan,
+     loan_distribution_tbl.`interest_rate` AS loan_distribution_tbl_interest_rate,
+     loan_distribution_tbl.`member_name` AS loan_distribution_tbl_member_name,
+     loan_distribution_tbl.`land_area` AS loan_distribution_tbl_land_area
+FROM
+     `loan_distribution_tbl` loan_distribution_tbl]]>
+	</queryString>
+	<field name="loan_distribution_tbl_aid" class="java.lang.Integer"/>
+	<field name="loan_distribution_tbl_your_loan" class="java.lang.Long"/>
+	<field name="loan_distribution_tbl_interest_rate" class="java.lang.Float"/>
+	<field name="loan_distribution_tbl_member_name" class="java.lang.String"/>
+	<field name="loan_distribution_tbl_land_area" class="java.lang.Long"/>
+	<group name="loan_distribution_tbl_aid">
+		<groupExpression><![CDATA[$F{loan_distribution_tbl_aid}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="d2188495-7569-4754-aa70-a4317dbbda2b"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="0fcbea06-33a0-41c0-8171-194310753ffb"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="a04064b4-5442-4a8f-b0e9-4eecc32d2df2"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{loan_distribution_tbl_aid}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="178" y="0" width="422" height="62" uuid="fe5168d8-31c7-43ad-9fa5-ce2462c1e664"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[  Loan Distribution]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="51220518-9948-452c-8685-2a6260471817"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="1" y="1" width="177" height="15" forecolor="#736343" uuid="81aefcaf-2845-4b41-bed9-6ba9b31e2ecb"/>
+				<text><![CDATA[  Your Loan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="159" height="15" forecolor="#736343" uuid="ee643ac2-61fa-4c76-bf56-db7a77a5e4f9"/>
+				<text><![CDATA[ Interest Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="388" y="0" width="174" height="15" forecolor="#736343" uuid="c4b0cb15-1886-47f4-b15c-9f7bf5328c84"/>
+				<text><![CDATA[  Member Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="575" y="1" width="200" height="15" forecolor="#736343" uuid="d6cb9b0e-4333-4613-b618-9177f58f600c"/>
+				<text><![CDATA[  Land Area]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="d7ad330a-be6a-47de-a784-edf0e08c1391"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="178" height="15" uuid="e14bf510-56af-48b0-8f47-2ad3dca2a676"/>
+					<textFieldExpression><![CDATA[$F{loan_distribution_tbl_your_loan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="222" y="0" width="153" height="15" uuid="fc1258fa-8d38-47cd-97fa-9e18d774187f"/>
+					<textFieldExpression><![CDATA[$F{loan_distribution_tbl_interest_rate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="200" height="15" uuid="6d3dada8-e857-4b9a-ac65-746c9f703dad"/>
+					<textFieldExpression><![CDATA[$F{loan_distribution_tbl_member_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="185" height="15" uuid="aab295eb-aed0-4f44-9b01-882ed220b146"/>
+					<textFieldExpression><![CDATA[$F{loan_distribution_tbl_land_area}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="70dd8955-d0d8-4615-a2b5-e72a12be2692"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="25193db0-8c19-410c-a331-beb684105fc4"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="bd619f5f-bc41-4012-b2e4-d52b0ebadead"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="06bd0c7f-7823-48dc-81cd-5f1c6ecb6355"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="82885ccf-5d81-47f0-8328-918b9e73495b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="loan_allocation_repo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2322e320-4a88-48e0-a73e-2f184ed9f36d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     loan_allocation_tbl.`aid` AS loan_allocation_tbl_aid,
+     loan_allocation_tbl.`loan_type` AS loan_allocation_tbl_loan_type,
+     loan_allocation_tbl.`date_of_taking_loan` AS loan_allocation_tbl_date_of_taking_loan,
+     loan_allocation_tbl.`outstanding_loan` AS loan_allocation_tbl_outstanding_loan,
+     loan_allocation_tbl.`rate_of_interest` AS loan_allocation_tbl_rate_of_interest,
+     loan_allocation_tbl.`maturity` AS loan_allocation_tbl_maturity,
+     loan_allocation_tbl.`loan_sactioned_amount` AS loan_allocation_tbl_loan_sactioned_amount,
+     loan_allocation_tbl.`account_holder_name` AS loan_allocation_tbl_account_holder_name
+FROM
+     `loan_allocation_tbl` loan_allocation_tbl]]>
+	</queryString>
+	<field name="loan_allocation_tbl_aid" class="java.lang.Integer"/>
+	<field name="loan_allocation_tbl_loan_type" class="java.lang.String"/>
+	<field name="loan_allocation_tbl_date_of_taking_loan" class="java.sql.Date"/>
+	<field name="loan_allocation_tbl_outstanding_loan" class="java.sql.Date"/>
+	<field name="loan_allocation_tbl_rate_of_interest" class="java.lang.Float"/>
+	<field name="loan_allocation_tbl_maturity" class="java.lang.Long"/>
+	<field name="loan_allocation_tbl_loan_sactioned_amount" class="java.lang.Long"/>
+	<field name="loan_allocation_tbl_account_holder_name" class="java.lang.String"/>
+	<group name="loan_allocation_tbl_aid">
+		<groupExpression><![CDATA[$F{loan_allocation_tbl_aid}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="4ae56619-677a-48e3-815a-c39169318553"/>
+					<textField>
+						<reportElement style="SubTitle" x="37" y="0" width="786" height="24" forecolor="#736343" uuid="6f15acc0-229b-451c-9d77-52ab6e9f37b4"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{loan_allocation_tbl_aid}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="198" y="0" width="437" height="62" uuid="16221858-4003-4d36-ba6e-39c854630ab9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="40" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Loan Allocation Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="a2de3ce7-c4e9-4f5d-b684-e1cc1566e0d7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="114" height="15" forecolor="#736343" uuid="547196d2-2006-41ee-bb19-8cf524b05c5b"/>
+				<text><![CDATA[loan Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="114" height="15" forecolor="#736343" uuid="e28efbbd-cde6-4d6d-a651-8081f6237bb2"/>
+				<text><![CDATA[Taking Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="213" y="1" width="114" height="15" forecolor="#736343" uuid="f36e6f58-90b7-4a7f-bde1-775c0193c453"/>
+				<text><![CDATA[Outstanding Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="342" y="0" width="98" height="15" forecolor="#736343" uuid="58c21209-0323-4cd2-9122-9887d99c5061"/>
+				<text><![CDATA[intrest]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="81" height="15" forecolor="#736343" uuid="b0329091-4ae4-42fc-bf6a-e63ed4b0574b"/>
+				<text><![CDATA[Maturity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="556" y="0" width="114" height="15" forecolor="#736343" uuid="a22ea45d-403c-4342-98f1-acec79c78156"/>
+				<text><![CDATA[Sactioned Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="703" y="0" width="78" height="15" forecolor="#736343" uuid="6031a094-f90c-4e74-899b-c26974f09cff"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="dfa1d254-d2ba-4a7b-ab43-0e4fec73749f"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="114" height="15" uuid="4cdd40e1-b692-4ae9-8c1b-c7f549f2196f"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_loan_type}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+					<reportElement style="Detail" x="114" y="0" width="114" height="15" uuid="d51de1fa-51c8-4624-b4fa-f9eaf8452ce8"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_date_of_taking_loan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+					<reportElement style="Detail" x="228" y="0" width="114" height="15" uuid="d8d4e807-da79-4651-bd90-bc527d5d2575"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_outstanding_loan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="342" y="0" width="98" height="15" uuid="0da0b2b3-f770-447c-b6d0-497ff4511d95"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_rate_of_interest}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="570" y="0" width="100" height="15" uuid="2f38796b-dea7-41e1-ab5a-1a4c65dd84bf"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_loan_sactioned_amount}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="686" y="0" width="116" height="15" uuid="ee74a1c4-afdc-455b-becd-67fe33edd467"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_account_holder_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="456" y="0" width="114" height="15" uuid="04878131-0a0e-4377-b903-29463e840d72"/>
+					<textFieldExpression><![CDATA[$F{loan_allocation_tbl_maturity}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="8a873e89-409a-452f-a7c6-370b7b71f429"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="b90a0dba-830e-4849-872f-f25f004a6502"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="8884407e-8691-4554-9814-6331c59bf88f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="7d76f724-10d4-4656-86d3-f68b1b67c4d5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="2adee821-35b5-47aa-9f50-4176b7d9b484"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

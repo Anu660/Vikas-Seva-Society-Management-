@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Voucher_repo" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2bc7e3dc-ddc9-4880-8825-f8c7f014d43f">
+	<property name="ireport.zoom" value="1.0000000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     voucher_tbl.`Date` AS voucher_tbl_Date,
+     voucher_tbl.`elementary_balence` AS voucher_tbl_elementary_balence,
+     voucher_tbl.`after_all_balence` AS voucher_tbl_after_all_balence
+FROM
+     `voucher_tbl` voucher_tbl]]>
+	</queryString>
+	<field name="voucher_tbl_Date" class="java.sql.Date"/>
+	<field name="voucher_tbl_elementary_balence" class="java.lang.Long"/>
+	<field name="voucher_tbl_after_all_balence" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="71" y="0" width="224" height="62" uuid="fcc862e4-1808-483e-aad0-63351b07fb79"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[  Voucher]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="219ae123-648e-416e-89bf-b52098077d53"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="2" y="0" width="69" height="15" forecolor="#736343" uuid="ac4200b2-6603-49d0-a0f6-61a650a8ae07"/>
+				<text><![CDATA[  Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="1" width="127" height="15" forecolor="#736343" uuid="9f942c52-2e0d-432b-a4c7-6ed03d06ffba"/>
+				<text><![CDATA[ Elementry Balence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="247" y="0" width="178" height="15" forecolor="#736343" uuid="91ec4637-20e9-4ff1-bfc4-bd6c8f786703"/>
+				<text><![CDATA[  After All Balence]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="777" height="15" uuid="bfda7fc7-48fc-438d-bf56-6136374ee4d6"/>
+				<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+					<reportElement style="Detail" x="2" y="0" width="69" height="15" uuid="a5bb6e3c-6bc1-4b14-b065-19d5d61ac114"/>
+					<textFieldExpression><![CDATA[$F{voucher_tbl_Date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="92" y="0" width="127" height="15" uuid="53c2cbdb-a3a3-47ea-9133-d22b44626280"/>
+					<textFieldExpression><![CDATA[$F{voucher_tbl_elementary_balence}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="247" y="0" width="124" height="15" uuid="f9a45200-e04f-40f4-9d1e-849eaa8fffea"/>
+					<textFieldExpression><![CDATA[$F{voucher_tbl_after_all_balence}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="f312c5b8-2287-401d-a30c-a29c0199c711"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="f888a994-df33-49eb-aec8-8bbc444ba610"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="272e0344-9b7a-42d6-9729-9a7ee41e9506"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="f628d9ac-cad8-46f9-99f6-db9d67ff8e84"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="b1709712-fce2-465c-8bce-a9a91eb7f6bb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
